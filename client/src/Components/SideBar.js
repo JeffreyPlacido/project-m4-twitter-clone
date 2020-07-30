@@ -12,7 +12,8 @@ import { Link, NavLink } from "react-router-dom";
 const SideBarContainerMain = styled.nav`
   height: 100vh;
   width: 200px;
-  margin-left: 30px;
+  margin-top: 50px;
+  margin-left: 50px;
   float: left;
 `;
 
@@ -30,7 +31,7 @@ const SideBarContainer = styled.div`
   }
   div {
     :hover {
-      border-radius: 25%;
+      border-radius: 50px;
       background-color: lightblue;
       cursor: pointer;
     }
@@ -42,13 +43,15 @@ const CatLogo = styled.div`
 `;
 
 const MeowButton = styled.button`
-  border-radius: 10px;
-  background-color: darkviolet;
-  color: white;
+  border-radius: 50px;
+  border: none;
+  background-color: coral;
+  color: darkviolet;
   width: 150px;
-  height: 30px;
+  height: 35px;
   margin-left: 15px;
   margin-top: 20px;
+  font-size: 18px;
 `;
 
 const SideBar = () => {
