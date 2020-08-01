@@ -1,5 +1,4 @@
 import React from "react";
-import GlobalStyles from "./GlobalStyles";
 import { ReactComponent as Logo } from "../Assets/logo.svg";
 import { Icon } from "react-icons-kit";
 import { bell } from "react-icons-kit/feather/bell";
@@ -7,7 +6,7 @@ import { user } from "react-icons-kit/feather/user";
 import { home } from "react-icons-kit/feather/home";
 import { bookmark } from "react-icons-kit/feather/bookmark";
 import styled from "styled-components";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const SideBarContainerMain = styled.nav`
   height: 100vh;

@@ -7,3 +7,5 @@ export const COLORS = {
 
   //lets use all the colors
 };
+
+export const Tweet = {};
