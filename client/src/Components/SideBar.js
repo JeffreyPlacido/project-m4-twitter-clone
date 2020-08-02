@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { ReactComponent as Logo } from "../Assets/logo.svg";
 import { Icon } from "react-icons-kit";
 import { bell } from "react-icons-kit/feather/bell";
@@ -7,6 +7,7 @@ import { home } from "react-icons-kit/feather/home";
 import { bookmark } from "react-icons-kit/feather/bookmark";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
+import { CurrentUserContext } from "./CurrentUserContext";
 
 const SideBarContainerMain = styled.nav`
   height: 100vh;
@@ -54,6 +55,7 @@ const MeowButton = styled.button`
 `;
 
 const SideBar = () => {
+  const { currentUser, status } = useContext(CurrentUserContext);
   return (
     <SideBarContainerMain>
       <CatLogo>
@@ -76,7 +78,7 @@ const SideBar = () => {
         <div>
           <Icon icon={user} />
           <NavLink
-            to="/profile"
+            to="/treasurymog"
             exact
             activeStyle={{
               fontWeight: "bold",

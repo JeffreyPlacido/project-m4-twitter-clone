@@ -8,10 +8,12 @@ function Profile() {
   const [profUser, setProfUser] = React.useState(null);
   const [profStatus, setProfStatus] = React.useState("loading");
   const [profFeed, setProfFeed] = React.useState(null);
+  const [feedStatus, setFeedStatus] = React.useState("loading");
 
   const { handle } = useParams();
   const nameHandle = handle.toString();
   console.log(profFeed);
+  console.log(feedStatus);
   useEffect(() => {
     fetch(`/api/${nameHandle}/profile`)
       .then((response) => response.json())
@@ -27,16 +29,19 @@ function Profile() {
       .then((response) => response.json())
       .then((data) => {
         setProfFeed(data);
-        setProfStatus("idle");
+        setFeedStatus("idle");
       });
   }, []);
 
   return (
     <>
-      {profStatus === "idle" ? (
+      {profStatus === "idle" && feedStatus === "idle" ? (
         <>
           <TopStuff value={profUser}></TopStuff>
-          <ProfileFeed value={profFeed}></ProfileFeed>
+          {profFeed.tweetIds.map((Feed) => {
+            let Tweet = profFeed.tweetsById[Feed];
+            return <ProfileFeed value={Tweet} />;
+          })}
         </>
       ) : (
         <div>{profStatus}</div>
