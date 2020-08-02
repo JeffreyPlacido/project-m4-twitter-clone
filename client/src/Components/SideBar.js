@@ -76,7 +76,7 @@ const SideBar = () => {
         <div>
           <Icon icon={user} />
           <NavLink
-            to="/:profileId"
+            to="/profile"
             exact
             activeStyle={{
               fontWeight: "bold",

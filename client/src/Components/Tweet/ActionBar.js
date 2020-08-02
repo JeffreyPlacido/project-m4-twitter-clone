@@ -14,16 +14,26 @@ import { upload } from "react-icons-kit/feather/upload";
 
 const DivDiv = styled.div`
   /* we heard you liek divs so we put a div in your div to div your div */
+  display: flex;
+  justify-content: space space-evenly;
+  padding-bottom: 15px;
+  border-bottom: solid 1px coral;
 `;
 
 const ActionBarIcons = styled.button`
   display: block;
-  margin: 0;
-  padding: 0;
+  margin-left: 30px;
+  padding-left: 6px;
   border: none;
   background: transparent;
   cursor: pointer;
   text-align: left;
+
+  svg {
+    width: 20px;
+    height: 20px;
+    color: purple;
+  }
 
   &:active {
     color: inherit;
