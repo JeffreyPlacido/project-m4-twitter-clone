@@ -6,6 +6,7 @@ import { messageSquare } from "react-icons-kit/feather/messageSquare";
 import { repeat } from "react-icons-kit/feather/repeat";
 import { heart } from "react-icons-kit/feather/heart";
 import { upload } from "react-icons-kit/feather/upload";
+import ActionBar from "../Tweet/ActionBar";
 
 const TweetWrapper = styled.div`
   background: white;
@@ -68,25 +69,25 @@ const EntireDiv = styled.div`
   text-align: left;
 `;
 
-const StatWrapper = styled.div`
-  div {
-    padding-right: 20px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    font-size: 16px;
-  }
-  display: flex;
-  align-items: center;
-  height: 48px;
-`;
-const Retweets = styled.div`
-  color: black;
-`;
-const Likes = styled.div``;
+// const StatWrapper = styled.div`
+//   div {
+//     padding-right: 20px;
+//     padding-top: 20px;
+//     padding-bottom: 20px;
+//     font-size: 16px;
+//   }
+//   display: flex;
+//   align-items: center;
+//   height: 48px;
+// `;
+// const Retweets = styled.div`
+//   color: black;
+// `;
+// const Likes = styled.div``;
 
-const DivDiv = styled.div`
-  display: flex;
-`;
+// const DivDiv = styled.div`
+//   display: flex;
+// `;
 
 const ActionBarIcons = styled.button`
   display: block;
@@ -106,6 +107,12 @@ const TweetStyles = (props) => {
   const date = moment(props.value.timestamp).format("h:mm a ∙ MMM Do, YYYY");
   return (
     <EntireDiv>
+      <form>
+        <label>
+          <input type="text" name="name" />
+        </label>
+        <input type="submit" value="Submit" />
+      </form>
       <HeadWrapper>
         <Avatar src={props.value.author.avatarSrc}></Avatar>
         <Name>
@@ -117,29 +124,16 @@ const TweetStyles = (props) => {
         <TweetContents>{props.value.status}</TweetContents>
         <Timestamp>{date}</Timestamp>
         <Divider />
-        <StatWrapper>
-          <Retweets>
+        {/* <StatWrapper>
+          {/* <Retweets>
             <b>{props.value.numRetweets}</b> Retweets
           </Retweets>
           <Likes>
             <b>{props.value.numLikes}</b> Likes
-          </Likes>
-        </StatWrapper>
+          </Likes> */}
+        {/* </StatWrapper> */}
         <Divider />
-        <DivDiv>
-          <ActionBarIcons>
-            <Icon icon={messageSquare} />
-          </ActionBarIcons>
-          <ActionBarIcons>
-            <Icon icon={repeat} />
-          </ActionBarIcons>
-          <ActionBarIcons>
-            <Icon icon={heart} />
-          </ActionBarIcons>
-          <ActionBarIcons>
-            <Icon icon={upload} />
-          </ActionBarIcons>
-        </DivDiv>
+        <ActionBar value={props}></ActionBar>
         <Divider />
       </TweetWrapper>
     </EntireDiv>

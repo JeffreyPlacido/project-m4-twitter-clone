@@ -5,6 +5,7 @@ import { messageSquare } from "react-icons-kit/feather/messageSquare";
 import { repeat } from "react-icons-kit/feather/repeat";
 import { heart } from "react-icons-kit/feather/heart";
 import { upload } from "react-icons-kit/feather/upload";
+import ActionBar from "../Tweet/ActionBar";
 
 const ProfileFeed = (props) => {
   console.log(props);
@@ -12,34 +13,17 @@ const ProfileFeed = (props) => {
   const tweetLink = "tweet/" + props.value.id;
   return (
     <Wrapper>
-      <a href={tweetLink}>
-        <Header>
-          <Avatar src={props.value.author.avatarSrc} />
-          <Name>
-            <DisplayName>{props.value.author.displayName}</DisplayName>
-            <a href={props.value.author.handle}>
-              <Username>@{props.value.author.handle}</Username>
-            </a>
-          </Name>
-        </Header>
-        <TweetContents>{props.value.status}</TweetContents>
-        <Timestamp></Timestamp>
-        <DivDiv>
-          <ActionBarIcons>
-            <Icon icon={messageSquare} />
-          </ActionBarIcons>
-          <ActionBarIcons>
-            <Icon icon={repeat} />
-          </ActionBarIcons>
-          <ActionBarIcons>
-            <Icon icon={heart} />
-          </ActionBarIcons>
-          <ActionBarIcons>
-            <Icon icon={upload} />
-          </ActionBarIcons>
-        </DivDiv>
-        <Divider></Divider>
-      </a>
+      <Header>
+        <Avatar src={props.value.author.avatarSrc} />
+        <Name>
+          <DisplayName>{props.value.author.displayName}</DisplayName>
+          <Username>@{props.value.author.handle}</Username>
+        </Name>
+      </Header>
+      <TweetContents>{props.value.status}</TweetContents>
+      <Timestamp></Timestamp>
+      <ActionBar value={props}></ActionBar>
+      <Divider></Divider>
     </Wrapper>
   );
 };

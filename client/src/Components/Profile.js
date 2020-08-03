@@ -19,16 +19,22 @@ function Profile() {
         setProfUser(dataInfo);
         setProfStatus("idle");
       });
-  }, []);
-
-  useEffect(() => {
     fetch(`/api/${nameHandle}/feed`)
       .then((response) => response.json())
       .then((data) => {
         setProfFeed(data);
         setFeedStatus("idle");
       });
-  }, []);
+  }, [handle]);
+
+  // useEffect(() => {
+  //   fetch(`/api/${nameHandle}/feed`)
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       setProfFeed(data);
+  //       setFeedStatus("idle");
+  //     });
+  // }, []);
 
   return (
     <>

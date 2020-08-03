@@ -5,6 +5,7 @@ import { messageSquare } from "react-icons-kit/feather/messageSquare";
 import { repeat } from "react-icons-kit/feather/repeat";
 import { heart } from "react-icons-kit/feather/heart";
 import { upload } from "react-icons-kit/feather/upload";
+import ActionBar from "../Tweet/ActionBar";
 
 const SingleTweet = (props) => {
   console.log(props);
@@ -15,27 +16,12 @@ const SingleTweet = (props) => {
         <Avatar src={props.value.tweet.author.avatarSrc} />
         <Name>
           <DisplayName>{props.value.tweet.author.displayName}</DisplayName>
-          <a href={profLink}>
-            <Username>@{props.value.tweet.author.handle}</Username>
-          </a>
+          <Username>@{props.value.tweet.author.handle}</Username>
         </Name>
       </Header>
       <TweetContents>{props.value.tweet.status}</TweetContents>
       <Timestamp>{props.value.tweet.timestamp}</Timestamp>
-      <DivDiv>
-        <ActionBarIcons>
-          <Icon icon={messageSquare} />
-        </ActionBarIcons>
-        <ActionBarIcons>
-          <Icon icon={repeat} />
-        </ActionBarIcons>
-        <ActionBarIcons>
-          <Icon icon={heart} />
-        </ActionBarIcons>
-        <ActionBarIcons>
-          <Icon icon={upload} />
-        </ActionBarIcons>
-      </DivDiv>
+      <ActionBar value={props} />
       <Divider></Divider>
     </Wrapper>
   );
@@ -80,7 +66,6 @@ const Wrapper = styled.div`
   margin-left: 250px;
   padding: 16px;
   text-align: left;
-  border-bottom: 1px solid coral;
 `;
 
 const TweetContents = styled.div`
@@ -94,21 +79,4 @@ const Timestamp = styled.div`
   padding-bottom: 16px;
 `;
 
-const DivDiv = styled.div`
-  display: flex;
-`;
-
-const ActionBarIcons = styled.button`
-  display: block;
-  margin-right: 20px;
-  color: purple;
-  padding: 0;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  text-align: left;
-  &:active {
-    color: inherit;
-  }
-`;
 export default SingleTweet;
