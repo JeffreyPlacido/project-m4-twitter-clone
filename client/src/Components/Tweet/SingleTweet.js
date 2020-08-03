@@ -1,19 +1,41 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
+import { Icon } from "react-icons-kit";
+import { messageSquare } from "react-icons-kit/feather/messageSquare";
+import { repeat } from "react-icons-kit/feather/repeat";
+import { heart } from "react-icons-kit/feather/heart";
+import { upload } from "react-icons-kit/feather/upload";
 
 const SingleTweet = (props) => {
   console.log(props);
+  const profLink = "/" + props.value.tweet.author.handle;
   return (
     <Wrapper>
       <Header>
-        <Avatar />
+        <Avatar src={props.value.tweet.author.avatarSrc} />
         <Name>
-          <DisplayName></DisplayName>
-          <Username>@</Username>
+          <DisplayName>{props.value.tweet.author.displayName}</DisplayName>
+          <a href={profLink}>
+            <Username>@{props.value.tweet.author.handle}</Username>
+          </a>
         </Name>
       </Header>
-      <TweetContents></TweetContents>
-      <Timestamp></Timestamp>
+      <TweetContents>{props.value.tweet.status}</TweetContents>
+      <Timestamp>{props.value.tweet.timestamp}</Timestamp>
+      <DivDiv>
+        <ActionBarIcons>
+          <Icon icon={messageSquare} />
+        </ActionBarIcons>
+        <ActionBarIcons>
+          <Icon icon={repeat} />
+        </ActionBarIcons>
+        <ActionBarIcons>
+          <Icon icon={heart} />
+        </ActionBarIcons>
+        <ActionBarIcons>
+          <Icon icon={upload} />
+        </ActionBarIcons>
+      </DivDiv>
       <Divider></Divider>
     </Wrapper>
   );
@@ -58,6 +80,7 @@ const Wrapper = styled.div`
   margin-left: 250px;
   padding: 16px;
   text-align: left;
+  border-bottom: 1px solid coral;
 `;
 
 const TweetContents = styled.div`
@@ -69,5 +92,23 @@ const Timestamp = styled.div`
   color: rgb(101, 119, 134);
   font-size: 16px;
   padding-bottom: 16px;
+`;
+
+const DivDiv = styled.div`
+  display: flex;
+`;
+
+const ActionBarIcons = styled.button`
+  display: block;
+  margin-right: 20px;
+  color: purple;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  &:active {
+    color: inherit;
+  }
 `;
 export default SingleTweet;

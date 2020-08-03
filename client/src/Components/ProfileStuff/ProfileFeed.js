@@ -1,24 +1,66 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
+import { Icon } from "react-icons-kit";
+import { messageSquare } from "react-icons-kit/feather/messageSquare";
+import { repeat } from "react-icons-kit/feather/repeat";
+import { heart } from "react-icons-kit/feather/heart";
+import { upload } from "react-icons-kit/feather/upload";
 
 const ProfileFeed = (props) => {
   console.log(props);
   console.log(props.value.author.avatarSrc);
+  const tweetLink = "tweet/" + props.value.id;
   return (
     <Wrapper>
-      <Header>
-        <Avatar src={props.value.author.avatarSrc} />
-        <Name>
-          <DisplayName>{props.value.author.displayName}</DisplayName>
-          <Username>@{props.value.author.handle}</Username>
-        </Name>
-      </Header>
-      <TweetContents>{props.value.status}</TweetContents>
-      <Timestamp></Timestamp>
-      <Divider></Divider>
+      <a href={tweetLink}>
+        <Header>
+          <Avatar src={props.value.author.avatarSrc} />
+          <Name>
+            <DisplayName>{props.value.author.displayName}</DisplayName>
+            <a href={props.value.author.handle}>
+              <Username>@{props.value.author.handle}</Username>
+            </a>
+          </Name>
+        </Header>
+        <TweetContents>{props.value.status}</TweetContents>
+        <Timestamp></Timestamp>
+        <DivDiv>
+          <ActionBarIcons>
+            <Icon icon={messageSquare} />
+          </ActionBarIcons>
+          <ActionBarIcons>
+            <Icon icon={repeat} />
+          </ActionBarIcons>
+          <ActionBarIcons>
+            <Icon icon={heart} />
+          </ActionBarIcons>
+          <ActionBarIcons>
+            <Icon icon={upload} />
+          </ActionBarIcons>
+        </DivDiv>
+        <Divider></Divider>
+      </a>
     </Wrapper>
   );
 };
+
+const DivDiv = styled.div`
+  display: flex;
+`;
+
+const ActionBarIcons = styled.button`
+  display: block;
+  margin-right: 20px;
+  color: purple;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  &:active {
+    color: inherit;
+  }
+`;
 
 const Name = styled.div`
   flex: 1;
@@ -46,7 +88,9 @@ const Avatar = styled.img`
   border-radius: 50%;
 `;
 
-const Header = styled.div``;
+const Header = styled.div`
+  display: flex;
+`;
 
 const Divider = styled.div`
   border-top: solid 2 black;
@@ -59,6 +103,10 @@ const Wrapper = styled.div`
   margin-left: 250px;
   padding: 16px;
   text-align: left;
+  border-bottom: solid 1px coral;
+  a {
+    text-decoration: none;
+  }
 `;
 
 const TweetContents = styled.div`

@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { TweetContext } from "../Tweet/TweetContext";
 
 const Header = () => {
-  const { displayName, username, avatarSrc } = useContext(TweetContext);
+  const { avatarSrc, displayName, username } = useContext(TweetContext);
   return (
     <Wrapper>
       <Avatar src={avatarSrc} />

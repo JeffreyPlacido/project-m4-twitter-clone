@@ -6,15 +6,23 @@ import { mapPin } from "react-icons-kit/feather/mapPin";
 
 const HeaderContainer = styled.div`
   margin-left: 250px;
-  border-bottom: solid 2px black;
+  a {
+    text-decoration: none;
+  }
 `;
 
 const Banner = styled.img`
   z-index: 2;
 `;
 
-const Avatar = styled.div`
+const Avatar = styled.img`
   z-index: 4;
+  width: 20vh;
+  height: 20vh;
+  border-radius: 50%;
+  border: 6px solid white;
+  margin-left: 20px;
+  transform: translate(40px, -120px);
 `;
 
 const FollowingButton = styled.button`
@@ -27,6 +35,9 @@ const FollowingButton = styled.button`
   font-size: 1.1rem;
   background: coral;
   cursor: pointer;
+  float: right;
+  margin-top: 20px;
+  margin-right: 20px;
 `;
 
 const UserName = styled.h2`
@@ -36,17 +47,20 @@ const UserName = styled.h2`
 `;
 
 const Handles = styled.div`
-  padding: 10px;
   color: darkgray;
+  padding-bottom: 10px;
 `;
 
 const BestFriends = styled.div``;
 
 const Setting = styled.div`
   display: flex;
+  color: darkgray;
 `;
 
-const Location = styled.div``;
+const Location = styled.div`
+  margin-right: 10px;
+`;
 
 const JoinDate = styled.div`
   color: darkgray;
@@ -56,7 +70,11 @@ const Following = styled.div``;
 
 const Followers = styled.div``;
 
-const NavBarTML = styled.nav``;
+const NavBarTML = styled.nav`
+  margin-top: 18px;
+  margin-bottom: 18px;
+  border-bottom: solid 2px violet;
+`;
 
 const Follow = styled.div`
   display: flex;
@@ -70,34 +88,39 @@ const Follow = styled.div`
   }
 `;
 
+const Fix = styled.div`
+  margin-top: -120px;
+`;
+
 const TopStuff = (props) => {
   return (
     <HeaderContainer>
       <Banner src={props.value.bannerSrc}></Banner>
       <Avatar src={props.value.avatarSrc}></Avatar>
       <FollowingButton>Follow</FollowingButton>
-      <UserName>{props.value.displayName}</UserName>
-      <Handles>@{props.value.handle}</Handles>
-      <BestFriends></BestFriends>
-      <Setting>
-        <Location>
-          <Icon icon={mapPin} />
-          {props.value.location}
-        </Location>
-        <JoinDate>
-          <Icon icon={calendar} /> Joined {props.value.joined}
-        </JoinDate>
-      </Setting>
-      <Follow>
-        <Following>
-          <span>{props.value.numFollowers}</span> Following
-        </Following>
-        <Followers>
-          <span>{props.value.numFollowing}</span> Followers
-        </Followers>
-      </Follow>
+      <Fix>
+        <UserName>{props.value.displayName}</UserName>
+        <Handles>@{props.value.handle}</Handles>
+        <BestFriends></BestFriends>
+        <Setting>
+          <Location>
+            <Icon icon={mapPin} />
+            {props.value.location}
+          </Location>
+          <JoinDate>
+            <Icon icon={calendar} /> Joined {props.value.joined}
+          </JoinDate>
+        </Setting>
+        <Follow>
+          <Following>
+            <span>{props.value.numFollowers}</span> Following
+          </Following>
+          <Followers>
+            <span>{props.value.numFollowing}</span> Followers
+          </Followers>
+        </Follow>
+      </Fix>
       <NavBarTML></NavBarTML>
-      <div></div>
     </HeaderContainer>
   );
 };

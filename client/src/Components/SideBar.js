@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import { ReactComponent as Logo } from "../Assets/logo.svg";
 import { Icon } from "react-icons-kit";
 import { bell } from "react-icons-kit/feather/bell";
@@ -55,7 +55,6 @@ const MeowButton = styled.button`
 `;
 
 const SideBar = () => {
-  const { currentUser, status } = useContext(CurrentUserContext);
   return (
     <SideBarContainerMain>
       <CatLogo>
@@ -78,8 +77,8 @@ const SideBar = () => {
         <div>
           <Icon icon={user} />
           <NavLink
-            to="/treasurymog"
             exact
+            to="/treasurymog"
             activeStyle={{
               fontWeight: "bold",
               color: "purple",

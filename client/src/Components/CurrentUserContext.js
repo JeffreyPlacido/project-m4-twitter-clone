@@ -1,25 +1,32 @@
-import React, { createContext, useEffect } from "react";
+import React from "react";
+export const CurrentUserContext = React.createContext(null);
 
-export const CurrentUserContext = createContext(null);
-
-export function CurrentUserProvider({ children }) {
+export const CurrentUserProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = React.useState(null);
   const [status, setStatus] = React.useState("loading");
+  console.log(currentUser);
 
-  useEffect(() => {
-    fetch("/api/me/profile")
-      .then((response) => response.json())
+  console.log(status);
+  function fetchUsers() {
+    fetch("api/me/profile")
+      .then((res) => res.json())
       .then((data) => {
         setCurrentUser(data.profile);
         setStatus("idle");
+      })
+      .catch((error) => {
+        console.log(error);
       });
-  }, []);
+  }
+  if (currentUser === null) {
+    fetchUsers();
+  }
 
   return (
     <CurrentUserContext.Provider value={{ currentUser, status }}>
       {children}
     </CurrentUserContext.Provider>
   );
-}
+};
 
-//`http://localhost:31415/api/me/profile`
+export default CurrentUserProvider;

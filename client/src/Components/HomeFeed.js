@@ -1,61 +1,43 @@
 import React, { useEffect } from "react";
-import { TweetProvider } from "./Tweet/TweetContext";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import styled from "styled-components";
-import Tweet from "./Tweet/Index";
+import TweetStyles from "./Tweet/TweetStyles";
 
-function HomeFeed() {
-  const [homeFeed, setHomeFeed] = React.useState(null);
+const HomeFeedPage = styled.div`
+  display: flex;
+  align-items: top;
+  height: 100vh;
+  background: #eee;
+`;
+
+const Homefeed = () => {
+  const [tweetFeed, setTweetFeed] = React.useState(null);
   const [status, setStatus] = React.useState("loading");
+  console.log(status);
+  console.log(tweetFeed);
 
   useEffect(() => {
     fetch("/api/me/home-feed")
-      .then((response) => response.json())
+      .then((res) => res.json())
       .then((data) => {
-        setHomeFeed(data);
-        setStatus("idle");
+        setTweetFeed(data);
+        setStatus("Feed");
       });
   }, []);
-
-  if (status === "idle") {
-    const { tweetIds, tweetsById } = homeFeed;
-
-    return (
-      <Tweets>
-        {tweetIds.map((tweetID) => {
-          const { displayName, handle, avatarSrc } = tweetsById[tweetID].author;
-          const {
-            status,
-            isLiked,
-            isRetweeted,
-            numLikes,
-            numRetweets,
-            timestamp,
-          } = tweetsById[tweetID];
-
-          return (
-            <TweetProvider
-              key={tweetID}
-              displayName={displayName}
-              handle={handle}
-              avatarSrc={avatarSrc}
-              tweetContent={status}
-              timestamp={timestamp}
-              isTweetLiked={isLiked}
-              isTweetRetweeted={isRetweeted}
-              numberLikes={numLikes}
-              numberRetweets={numRetweets}
-            >
-              <Tweet />
-            </TweetProvider>
-          );
-        })}
-      </Tweets>
-    );
-  } else {
-    return <div>Loading</div>;
-  }
-}
-
-const Tweets = styled.div``;
-
-export default HomeFeed;
+  return (
+    <>
+      {status === "Feed" ? (
+        <>
+          {tweetFeed.tweetIds.map((Feed) => {
+            let Tweet = tweetFeed.tweetsById[Feed];
+            console.log(Tweet);
+            return <TweetStyles value={Tweet} />;
+          })}
+        </>
+      ) : (
+        <div>{status}</div>
+      )}
+    </>
+  );
+};
+export default Homefeed;

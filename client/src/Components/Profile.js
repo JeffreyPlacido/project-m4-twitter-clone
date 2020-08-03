@@ -11,8 +11,6 @@ function Profile() {
 
   const { handle } = useParams();
   const nameHandle = handle.toString();
-  console.log(profFeed);
-  console.log(feedStatus);
   useEffect(() => {
     fetch(`/api/${nameHandle}/profile`)
       .then((response) => response.json())
