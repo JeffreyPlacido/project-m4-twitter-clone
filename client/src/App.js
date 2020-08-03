@@ -4,8 +4,8 @@ import Bookmarks from "../src/Components/Bookmarks";
 import HomeFeed from "../src/Components/HomeFeed";
 import Notifications from "../src/Components/Notifications";
 import Profile from "../src/Components/Profile";
-import TweetDetails from "./Components/Tweet/TweetDetails";
 import SideBar from "../src/Components/SideBar";
+import IndividualTweetPage from "./Components/IndividualTweetPage";
 
 const App = () => {
   return (
@@ -21,8 +21,8 @@ const App = () => {
         <Route path="/bookmarks">
           <Bookmarks />
         </Route>
-        <Route exact path="/tweet">
-          <TweetDetails />
+        <Route exact path="/tweet/:tweetId">
+          <IndividualTweetPage />
         </Route>
         <Route exact path="/:handle">
           <Profile />

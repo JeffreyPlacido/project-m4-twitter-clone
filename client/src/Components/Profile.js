@@ -1,6 +1,5 @@
 import React, { createContext, useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import styled from "styled-components";
 import TopStuff from "./ProfileStuff/Top";
 import ProfileFeed from "./ProfileStuff/ProfileFeed";
 
