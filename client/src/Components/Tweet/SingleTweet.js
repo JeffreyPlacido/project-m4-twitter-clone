@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import styled from "styled-components";
 import { Icon } from "react-icons-kit";
 import { messageSquare } from "react-icons-kit/feather/messageSquare";
@@ -6,17 +6,28 @@ import { repeat } from "react-icons-kit/feather/repeat";
 import { heart } from "react-icons-kit/feather/heart";
 import { upload } from "react-icons-kit/feather/upload";
 import ActionBar from "../Tweet/ActionBar";
+import { useHistory } from "react-router-dom";
 
 const SingleTweet = (props) => {
   console.log(props);
   const profLink = "/" + props.value.tweet.author.handle;
+
+  const history = useHistory();
+
+  function navigateProfile(e) {
+    e.stopPropagation();
+    history.push(`/${props.value.tweet.author.handle}`);
+  }
+
   return (
     <Wrapper>
       <Header>
         <Avatar src={props.value.tweet.author.avatarSrc} />
         <Name>
           <DisplayName>{props.value.tweet.author.displayName}</DisplayName>
-          <Username>@{props.value.tweet.author.handle}</Username>
+          <Username tabIndex="0" onClick={navigateProfile}>
+            @{props.value.tweet.author.handle}
+          </Username>
         </Name>
       </Header>
       <TweetContents>{props.value.tweet.status}</TweetContents>

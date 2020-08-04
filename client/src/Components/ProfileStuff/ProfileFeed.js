@@ -6,21 +6,35 @@ import { repeat } from "react-icons-kit/feather/repeat";
 import { heart } from "react-icons-kit/feather/heart";
 import { upload } from "react-icons-kit/feather/upload";
 import ActionBar from "../Tweet/ActionBar";
+import { useHistory } from "react-router-dom";
 
 const ProfileFeed = (props) => {
-  console.log(props);
-  console.log(props.value.author.avatarSrc);
+  const history = useHistory();
   const tweetLink = "tweet/" + props.value.id;
+
+  function navigateTweet(e) {
+    e.stopPropagation();
+    history.push(`/tweet/${props.value.id}`);
+  }
+  function navigateProfile(e) {
+    e.stopPropagation();
+    history.push(`/${props.value.author.handle}`);
+  }
+
   return (
     <Wrapper>
       <Header>
         <Avatar src={props.value.author.avatarSrc} />
         <Name>
           <DisplayName>{props.value.author.displayName}</DisplayName>
-          <Username>@{props.value.author.handle}</Username>
+          <Username tabIndex="0" onClick={navigateProfile}>
+            @{props.value.author.handle}
+          </Username>
         </Name>
       </Header>
-      <TweetContents>{props.value.status}</TweetContents>
+      <TweetContents tabIndex="0" onClick={navigateTweet}>
+        {props.value.status}
+      </TweetContents>
       <Timestamp></Timestamp>
       <ActionBar value={props}></ActionBar>
       <Divider></Divider>

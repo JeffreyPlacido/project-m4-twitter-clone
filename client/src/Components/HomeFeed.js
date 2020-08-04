@@ -27,9 +27,10 @@ const Homefeed = () => {
     <>
       {status === "Feed" ? (
         <>
-          <TweetCreate tweetFeed={tweetFeed} setTweetFeed={setTweetFeed}>
-            {TweetCreate}
-          </TweetCreate>
+          <TweetCreate
+            tweetFeed={tweetFeed}
+            setTweetFeed={setTweetFeed}
+          ></TweetCreate>
           {tweetFeed.tweetIds.map((Feed) => {
             let Tweet = tweetFeed.tweetsById[Feed];
             console.log(Tweet);

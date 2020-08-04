@@ -7,6 +7,7 @@ import { repeat } from "react-icons-kit/feather/repeat";
 import { heart } from "react-icons-kit/feather/heart";
 import { upload } from "react-icons-kit/feather/upload";
 import ActionBar from "../Tweet/ActionBar";
+import { useHistory } from "react-router-dom";
 
 const TweetWrapper = styled.div`
   background: white;
@@ -69,26 +70,6 @@ const EntireDiv = styled.div`
   text-align: left;
 `;
 
-// const StatWrapper = styled.div`
-//   div {
-//     padding-right: 20px;
-//     padding-top: 20px;
-//     padding-bottom: 20px;
-//     font-size: 16px;
-//   }
-//   display: flex;
-//   align-items: center;
-//   height: 48px;
-// `;
-// const Retweets = styled.div`
-//   color: black;
-// `;
-// const Likes = styled.div``;
-
-// const DivDiv = styled.div`
-//   display: flex;
-// `;
-
 const ActionBarIcons = styled.button`
   display: block;
   margin-right: 20px;
@@ -105,17 +86,32 @@ const ActionBarIcons = styled.button`
 
 const TweetStyles = (props) => {
   const date = moment(props.value.timestamp).format("h:mm a ∙ MMM Do, YYYY");
+  const history = useHistory();
+
+  function navigateTweet(e) {
+    e.stopPropagation();
+    history.push(`/tweet/${props.value.id}`);
+  }
+  function navigateProfile(e) {
+    e.stopPropagation();
+    history.push(`/${props.value.author.handle}`);
+  }
+
   return (
     <EntireDiv>
       <HeadWrapper>
         <Avatar src={props.value.author.avatarSrc}></Avatar>
         <Name>
           <DisplayName>{props.value.author.displayName}</DisplayName>
-          <Username>@{props.value.author.handle}</Username>
+          <Username tabIndex="0" onClick={navigateProfile}>
+            @{props.value.author.handle}
+          </Username>
         </Name>
       </HeadWrapper>
       <TweetWrapper>
-        <TweetContents>{props.value.status}</TweetContents>
+        <TweetContents tabIndex="0" onClick={navigateTweet}>
+          {props.value.status}
+        </TweetContents>
         <Timestamp>{date}</Timestamp>
         <Divider />
         <Divider />

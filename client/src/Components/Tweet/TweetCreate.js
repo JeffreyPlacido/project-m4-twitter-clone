@@ -3,16 +3,21 @@ import styled from "styled-components";
 
 const Input = styled.input`
   border-radius: 4px;
-  padding: 8px;
   border: 1px solid grey;
-  margin: 5px;
+  margin-left: 220px;
+  margin-bottom: 50px;
+  margin-top: 50px;
+  height: 50px;
+  width: 500px;
 `;
 
 const Button = styled.button`
+  margin-left: 20px;
   color: purple;
   background-color: coral;
-  padding: 8px;
   border-radius: 4px;
+  width: 100px;
+  height: 50px;
 `;
 
 const TweetCreate = ({ setTweetFeed, tweetFeed }) => {
@@ -34,7 +39,7 @@ const TweetCreate = ({ setTweetFeed, tweetFeed }) => {
           });
       });
   }
-
+  console.log(TweetCreate);
   return (
     <div>
       <Input
