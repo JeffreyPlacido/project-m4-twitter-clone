@@ -11,7 +11,8 @@ import { useHistory } from "react-router-dom";
 const SingleTweet = (props) => {
   console.log(props);
   const profLink = "/" + props.value.tweet.author.handle;
-
+  const picture = props.value.media;
+  const catPhotos = picture.map((ele) => ele.url);
   const history = useHistory();
 
   function navigateProfile(e) {
@@ -31,6 +32,7 @@ const SingleTweet = (props) => {
         </Name>
       </Header>
       <TweetContents>{props.value.tweet.status}</TweetContents>
+      <img src="catPhotos" />
       <Timestamp>{props.value.tweet.timestamp}</Timestamp>
       <NewActionBar value={props} />
       <Divider></Divider>

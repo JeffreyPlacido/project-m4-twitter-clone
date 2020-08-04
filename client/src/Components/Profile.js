@@ -26,15 +26,6 @@ function Profile() {
       });
   }, [handle]);
 
-  // useEffect(() => {
-  //   fetch(`/api/${nameHandle}/feed`)
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       setProfFeed(data);
-  //       setFeedStatus("idle");
-  //     });
-  // }, []);
-
   return (
     <>
       {profStatus === "idle" && feedStatus === "idle" ? (

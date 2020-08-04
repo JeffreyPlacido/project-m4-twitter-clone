@@ -11,6 +11,8 @@ import { useHistory } from "react-router-dom";
 const ProfileFeed = (props) => {
   const history = useHistory();
   const tweetLink = "tweet/" + props.value.id;
+  const picture = props.value.media;
+  const catPhotos = picture.map((ele) => ele.url);
 
   function navigateTweet(e) {
     e.stopPropagation();
@@ -35,6 +37,7 @@ const ProfileFeed = (props) => {
       <TweetContents tabIndex="0" onClick={navigateTweet}>
         {props.value.status}
       </TweetContents>
+      <img src={catPhotos} />
       <Timestamp></Timestamp>
       <ActionBar value={props}></ActionBar>
       <Divider></Divider>

@@ -66,7 +66,7 @@ const Username = styled.div`
 `;
 
 const EntireDiv = styled.div`
-  margin-left: 470px;
+  margin-left: 350px;
   text-align: left;
 `;
 
@@ -87,6 +87,8 @@ const ActionBarIcons = styled.button`
 const TweetStyles = (props) => {
   const date = moment(props.value.timestamp).format("h:mm a ∙ MMM Do, YYYY");
   const history = useHistory();
+  const picture = props.value.media;
+  const catPhotos = picture.map((ele) => ele.url);
 
   function navigateTweet(e) {
     e.stopPropagation();
@@ -112,6 +114,7 @@ const TweetStyles = (props) => {
         <TweetContents tabIndex="0" onClick={navigateTweet}>
           {props.value.status}
         </TweetContents>
+        <img src={catPhotos} />
         <Timestamp>{date}</Timestamp>
         <Divider />
         <Divider />

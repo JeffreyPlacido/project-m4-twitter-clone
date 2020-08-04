@@ -8,7 +8,7 @@ const Total = styled.div`
 const Input = styled.input`
   border-radius: 4px;
   border: 1px solid grey;
-  margin-left: 220px;
+  margin-left: 8vw;
   margin-bottom: 50px;
   margin-top: 50px;
   height: 50px;
@@ -44,13 +44,13 @@ const TweetCreate = ({ setTweetFeed, tweetFeed }) => {
           });
       });
   }
-  console.log(TweetCreate);
+
   return (
     <Total>
       <Input
         type="text"
-        search={search}
-        onChange={(ev) => setSearch(ev.target.search)}
+        value={search}
+        onChange={(ev) => setSearch(ev.target.value)}
         onKeyDown={(ev) => {
           switch (ev.key) {
             case "Enter": {

@@ -12,6 +12,7 @@ const HeaderContainer = styled.div`
 `;
 
 const Banner = styled.img`
+  width: 1000px;
   z-index: 2;
 `;
 
@@ -22,6 +23,7 @@ const Avatar = styled.img`
   border-radius: 50%;
   border: 6px solid white;
   margin-left: 20px;
+  margin-right: 250px;
   transform: translate(40px, -120px);
 `;
 
@@ -37,7 +39,7 @@ const FollowingButton = styled.button`
   cursor: pointer;
   float: right;
   margin-top: 20px;
-  margin-right: 20px;
+  margin-right: 450px;
 `;
 
 const UserName = styled.h2`
@@ -72,6 +74,7 @@ const Followers = styled.div``;
 
 const NavBarTML = styled.nav`
   margin-top: 18px;
+  margin-right: 600px;
   margin-bottom: 18px;
   border-bottom: solid 2px violet;
 `;
