@@ -1,7 +1,7 @@
 import React from "react";
 
 const Bookmarks = () => {
-  return <div>Hello world I hit em up</div>;
+  return <div>Hello world</div>;
 };
 
 export default Bookmarks;

@@ -1,6 +1,10 @@
 import React, { useState, useContext, useEffect } from "react";
 import styled from "styled-components";
 
+const Total = styled.div`
+  display: flex;
+`;
+
 const Input = styled.input`
   border-radius: 4px;
   border: 1px solid grey;
@@ -16,6 +20,7 @@ const Button = styled.button`
   color: purple;
   background-color: coral;
   border-radius: 4px;
+  margin-top: 50px;
   width: 100px;
   height: 50px;
 `;
@@ -41,7 +46,7 @@ const TweetCreate = ({ setTweetFeed, tweetFeed }) => {
   }
   console.log(TweetCreate);
   return (
-    <div>
+    <Total>
       <Input
         type="text"
         search={search}
@@ -56,7 +61,7 @@ const TweetCreate = ({ setTweetFeed, tweetFeed }) => {
         }}
       />
       <Button onClick={() => tweetContinue(search)}>meow</Button>
-    </div>
+    </Total>
   );
 };
 

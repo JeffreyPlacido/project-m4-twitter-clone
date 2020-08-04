@@ -5,7 +5,7 @@ import { messageSquare } from "react-icons-kit/feather/messageSquare";
 import { repeat } from "react-icons-kit/feather/repeat";
 import { heart } from "react-icons-kit/feather/heart";
 import { upload } from "react-icons-kit/feather/upload";
-import ActionBar from "../Tweet/ActionBar";
+import NewActionBar from "../Tweet/NewActionBar";
 import { useHistory } from "react-router-dom";
 
 const SingleTweet = (props) => {
@@ -32,7 +32,7 @@ const SingleTweet = (props) => {
       </Header>
       <TweetContents>{props.value.tweet.status}</TweetContents>
       <Timestamp>{props.value.tweet.timestamp}</Timestamp>
-      <ActionBar value={props} />
+      <NewActionBar value={props} />
       <Divider></Divider>
     </Wrapper>
   );
