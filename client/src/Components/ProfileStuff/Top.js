@@ -23,24 +23,24 @@ const Avatar = styled.img`
   border-radius: 50%;
   border: 6px solid white;
   margin-left: 20px;
-  margin-right: 250px;
+  margin-right: 1050px;
   transform: translate(40px, -120px);
 `;
 
-const FollowingButton = styled.button`
-  width: 180px;
-  height: 45px;
-  padding: 10px 15px;
-  border-radius: 30px;
-  color: purple;
-  font-weight: 700;
-  font-size: 1.1rem;
-  background: coral;
-  cursor: pointer;
-  float: right;
-  margin-top: 20px;
-  margin-right: 450px;
-`;
+// const FollowingButton = styled.button`
+//   width: 180px;
+//   height: 45px;
+//   padding: 10px 15px;
+//   border-radius: 30px;
+//   color: purple;
+//   font-weight: 700;
+//   font-size: 1.1rem;
+//   background: coral;
+//   cursor: pointer;
+//   float: right;
+//   margin-top: 20px;
+//   margin-right: 450px;
+// `;
 
 const UserName = styled.h2`
   font-weight: 700;
@@ -100,7 +100,7 @@ const TopStuff = (props) => {
     <HeaderContainer>
       <Banner src={props.value.bannerSrc}></Banner>
       <Avatar src={props.value.avatarSrc}></Avatar>
-      <FollowingButton>Follow</FollowingButton>
+      {/* <FollowingButton>Follow</FollowingButton> */}
       <Fix>
         <UserName>{props.value.displayName}</UserName>
         <Handles>@{props.value.handle}</Handles>
