@@ -10,16 +10,15 @@ function Profile() {
   const [feedStatus, setFeedStatus] = React.useState("loading");
 
   const { handle } = useParams();
-  const nameHandle = handle.toString();
   useEffect(() => {
-    fetch(`/api/${nameHandle}/profile`)
+    fetch(`/api/${handle}/profile`)
       .then((response) => response.json())
       .then((data) => {
         const dataInfo = data.profile;
         setProfUser(dataInfo);
         setProfStatus("idle");
       });
-    fetch(`/api/${nameHandle}/feed`)
+    fetch(`/api/${handle}/feed`)
       .then((response) => response.json())
       .then((data) => {
         setProfFeed(data);

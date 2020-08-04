@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import moment from "moment";
 import { Icon } from "react-icons-kit";
@@ -107,12 +107,6 @@ const TweetStyles = (props) => {
   const date = moment(props.value.timestamp).format("h:mm a ∙ MMM Do, YYYY");
   return (
     <EntireDiv>
-      <form>
-        <label>
-          <input type="text" name="name" />
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
       <HeadWrapper>
         <Avatar src={props.value.author.avatarSrc}></Avatar>
         <Name>
@@ -124,14 +118,6 @@ const TweetStyles = (props) => {
         <TweetContents>{props.value.status}</TweetContents>
         <Timestamp>{date}</Timestamp>
         <Divider />
-        {/* <StatWrapper>
-          {/* <Retweets>
-            <b>{props.value.numRetweets}</b> Retweets
-          </Retweets>
-          <Likes>
-            <b>{props.value.numLikes}</b> Likes
-          </Likes> */}
-        {/* </StatWrapper> */}
         <Divider />
         <ActionBar value={props}></ActionBar>
         <Divider />
