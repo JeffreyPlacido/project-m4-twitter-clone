@@ -1,10 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import styled from "styled-components";
-import CharCountInput from "./CharCount";
 
-//DONT DELETE
-
-//DONT DELETE BELOW
 const Total = styled.div`
   display: flex;
 `;
@@ -30,13 +26,9 @@ const Button = styled.button`
 `;
 
 const TweetCreate = ({ setTweetFeed, tweetFeed }) => {
-  const [search, setSearch] = React.useState();
-  const [char, setChar] = React.useState(280);
-  function charChange() {
-    setChar((prevCount) => prevCount - search.length);
-
-    //ask if you can have a 2 statehooks fire off simultaneously
-  }
+  const [search, setSearch] = React.useState("");
+  const buttonCheck = search.length > 280 ? true : false;
+  // const limitDiff = search.length;
 
   const enterTweet = {
     method: "POST",
@@ -74,9 +66,39 @@ const TweetCreate = ({ setTweetFeed, tweetFeed }) => {
           }
         }}
       />
-      <Button onClick={() => tweetContinue(search)}>meow</Button>
+
+      {280 - search.length > 150 ? (
+        <Green>{280 - search.length}</Green>
+      ) : 280 - search.length > 50 ? (
+        <Yellow>{280 - search.length}</Yellow>
+      ) : 280 - search.length >= 0 ? (
+        <Red>{280 - search.length}</Red>
+      ) : (
+        <Red></Red>
+      )}
+
+      <Button
+        disabled={search.length > 280}
+        onClick={(ev) => tweetContinue(search)}
+      >
+        meow
+      </Button>
     </Total>
   );
 };
+
+const Green = styled.div`
+  color: green;
+`;
+
+const Yellow = styled.div`
+  color: gold;
+`;
+
+const Red = styled.div`
+  color: red;
+`;
+
+const NewColor = styled.div``;
 
 export default TweetCreate;

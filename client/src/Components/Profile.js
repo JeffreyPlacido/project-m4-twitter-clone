@@ -30,7 +30,7 @@ function Profile() {
   }, [handle]);
 
   return (
-    <>
+    <All>
       {profStatus === "idle" && feedStatus === "idle" ? (
         <>
           <TopStuff value={profUser}></TopStuff>
@@ -48,9 +48,11 @@ function Profile() {
           <Msg>Loading please wait</Msg>
         </>
       )}
-    </>
+    </All>
   );
 }
+
+const All = styled.div``;
 
 const rotate = keyframes`
 from {

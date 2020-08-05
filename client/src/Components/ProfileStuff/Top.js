@@ -76,7 +76,6 @@ const NavBarTML = styled.nav`
   margin-top: 18px;
   margin-right: 600px;
   margin-bottom: 18px;
-  border-bottom: solid 2px violet;
 `;
 
 const Follow = styled.div`
