@@ -83,6 +83,7 @@ const ActionBarIcons = styled.button`
     color: inherit;
   }
 `;
+const Clicker = styled.div``;
 
 const TweetStyles = (props) => {
   const date = moment(props.value.timestamp).format("h:mm a ∙ MMM Do, YYYY");
@@ -111,10 +112,10 @@ const TweetStyles = (props) => {
         </Name>
       </HeadWrapper>
       <TweetWrapper>
-        <TweetContents tabIndex="0" onClick={navigateTweet}>
-          {props.value.status}
-        </TweetContents>
-        <img src={catPhotos} />
+        <Clicker tabIndex="0" onClick={navigateTweet}>
+          <TweetContents>{props.value.status}</TweetContents>
+          <img src={catPhotos} />
+        </Clicker>
         <Timestamp>{date}</Timestamp>
         <Divider />
         <Divider />

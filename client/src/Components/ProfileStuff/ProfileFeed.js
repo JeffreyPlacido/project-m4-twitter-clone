@@ -34,16 +34,17 @@ const ProfileFeed = (props) => {
           </Username>
         </Name>
       </Header>
-      <TweetContents tabIndex="0" onClick={navigateTweet}>
-        {props.value.status}
-      </TweetContents>
-      <img src={catPhotos} />
+      <Clicker tabIndex="0" onClick={navigateTweet}>
+        <TweetContents>{props.value.status}</TweetContents>
+        <img src={catPhotos} />
+      </Clicker>
       <Timestamp></Timestamp>
       <ActionBar value={props}></ActionBar>
       <Divider></Divider>
     </Wrapper>
   );
 };
+const Clicker = styled.div``;
 
 const DivDiv = styled.div`
   display: flex;

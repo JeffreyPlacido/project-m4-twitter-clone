@@ -1,6 +1,10 @@
 import React, { useState, useContext, useEffect } from "react";
 import styled from "styled-components";
+import CharCountInput from "./CharCount";
 
+//DONT DELETE
+
+//DONT DELETE BELOW
 const Total = styled.div`
   display: flex;
 `;
@@ -27,11 +31,20 @@ const Button = styled.button`
 
 const TweetCreate = ({ setTweetFeed, tweetFeed }) => {
   const [search, setSearch] = React.useState();
+  const [char, setChar] = React.useState(280);
+  function charChange() {
+    setChar((prevCount) => prevCount - search.length);
+
+    //ask if you can have a 2 statehooks fire off simultaneously
+  }
+
   const enterTweet = {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ status: search }),
   };
+
+  const CharChange = styled.p``;
 
   function tweetContinue(param) {
     fetch("/api/tweet", enterTweet)
@@ -41,7 +54,8 @@ const TweetCreate = ({ setTweetFeed, tweetFeed }) => {
           .then((res) => res.json())
           .then((data) => {
             setTweetFeed(data);
-          });
+          })
+          .catch((error) => window.location.replace("/error/404"));
       });
   }
 

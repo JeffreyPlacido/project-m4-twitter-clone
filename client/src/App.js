@@ -6,6 +6,7 @@ import Notifications from "../src/Components/Notifications";
 import Profile from "../src/Components/Profile";
 import SideBar from "../src/Components/SideBar";
 import IndividualTweetPage from "./Components/IndividualTweetPage";
+import Bomb from "./Components/Bomb";
 
 const App = () => {
   return (
@@ -26,6 +27,9 @@ const App = () => {
         </Route>
         <Route exact path="/:handle">
           <Profile />
+        </Route>
+        <Route exact path="/error/404">
+          <Bomb />
         </Route>
       </Switch>
     </Router>
