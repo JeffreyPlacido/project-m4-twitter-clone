@@ -13,4 +13,4 @@ Liked/Favorite
 <img src="assets\screenshots\cat3.PNG" style="width: 100%;" />
 
 Tweet
-<img src="assets\screenshots\cat4.PNG" style="width: 100%;" />
+<img src="assets\screenshots\cat 4.PNG" style="width: 100%;" />
